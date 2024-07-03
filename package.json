@@ -9,10 +9,18 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-three/drei": "^9.108.1",
+    "@react-three/fiber": "^8.16.8",
+    "@react-three/postprocessing": "^2.16.2",
     "expo": "~51.0.14",
+    "expo-gl": "~14.0.2",
     "expo-status-bar": "~1.12.1",
+    "maath": "^0.10.7",
+    "r3f-native-orbitcontrols": "^1.0.12",
     "react": "18.2.0",
-    "react-native": "0.74.2"
+    "react-native": "0.74.2",
+    "three": "^0.166.0",
+    "typescript": "~5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
