@@ -2,11 +2,12 @@ name: Deploy-Android
 
 on:
   workflow_dispatch:
-  
+
 env:
-  APP_CENTER_TOKEN: ${{ secrets.APP_CENTER_API_KEY  }}  
-  APP_NAME: ${{ 'Robot Inc/Robot'  }}  
-  UPLOAD_FILE: ${{ 'android/app/build/outputs/apk/app-release.apk'  }}  
+  APP_CENTER_TOKEN: ${{ secrets.APP_CENTER_API_KEY  }}
+  APP_NAME: ${{ 'Robot Inc/Robot'  }}
+  UPLOAD_FILE: ${{ 'android/app/build/outputs/apk/app-release.apk'  }}
+
 jobs:
   build:
     name: Build
@@ -20,11 +21,16 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
       - name: Install dependencies
         run: npm install
 
       - name: Build android
-        run: npm run cd android && ./gradlew assembleRelease
+        run: cd android && ./gradlew assembleDebug
 
       - name: Upload to App Center
         uses: wzieba/AppCenter-Github-Action@v1
@@ -35,4 +41,3 @@ jobs:
           file: ${{ env.UPLOAD_FILE }}
           notifyTesters: true
           debug: false
-
