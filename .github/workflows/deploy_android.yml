@@ -4,9 +4,6 @@ on:
   workflow_dispatch:
 
 env:
-  APP_CENTER_TOKEN: ${{ secrets.APP_CENTER_API_KEY  }}
-  APP_NAME: ${{ 'Robot Inc/Robot'  }}
-  UPLOAD_FILE: ${{ 'android/app/build/outputs/apk/app-release.apk'  }}
 
 jobs:
   build:
@@ -35,9 +32,6 @@ jobs:
       - name: Upload to App Center
         uses: wzieba/AppCenter-Github-Action@v1
         with:
-          appName: ${{ env.APP_NAME }}
-          token: ${{ env.APP_CENTER_TOKEN }}
-          group: ${{ env.TESTING_GROUP }}
-          file: ${{ env.UPLOAD_FILE }}
-          notifyTesters: true
-          debug: false
+          APP_CENTER_TOKEN: ${{ secrets.APP_CENTER_API_KEY  }}
+          APP_NAME: ${{ 'Robot Inc/Robot'  }}
+          UPLOAD_FILE: ${{ 'android/app/build/outputs/apk/app-release.apk'  }}
